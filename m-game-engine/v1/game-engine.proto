@@ -1,0 +1,32 @@
+// PATH="${PATH}:${HOME}/go/bin" protoc ...
+// protoc --go-grpc_out=. highscore.proto
+
+syntax = "proto3";
+package m.gameengine.v1;
+
+// option go_package = "./;pb";
+option go_package = "./;gameengine";
+
+// define the apis
+
+service GameEngine{
+  rpc GetSize(GetSizeRequest) returns (GetSizeResponse);
+  rpc SetScore(SetScoreRequest) returns (SetScoreResponse);
+}
+
+
+message GetSizeRequest {
+
+}
+
+message GetSizeResponse {
+  double size = 1;
+}
+
+message SetScoreRequest {
+  double score = 1;
+}
+
+message SetScoreResponse {
+  bool set = 1;
+}
