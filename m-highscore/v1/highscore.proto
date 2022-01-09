@@ -1,0 +1,32 @@
+// PATH="${PATH}:${HOME}/go/bin" protoc ...
+// protoc --go-grpc_out=. highscore.proto
+
+syntax = "proto3";
+package m.highscore.v1;
+
+// option go_package = "./;pb";
+option go_package = "./;game";
+
+// define the apis
+
+service Game{
+  rpc SetHighScore(SetHighScoreRequest) returns (SetHighScoreResponse);
+  rpc GetHighScore(GetHighScoreRequest) returns (GetHighScoreResponse);
+}
+
+
+message SetHighScoreRequest {
+  double high_score = 1;
+}
+
+message SetHighScoreResponse {
+  bool set = 1;
+}
+
+message GetHighScoreRequest {
+
+}
+
+message GetHighScoreResponse {
+  double high_score = 1;
+}
